@@ -17,15 +17,17 @@ class Blog_ATS(unittest.TestCase):
         driver = self.driver
         driver.maximize_window()
         driver.get("http://127.0.0.1:8000/admin")
+        time.sleep(3)
         elem = driver.find_element_by_id("id_username")
         elem.send_keys(user)
         elem = driver.find_element_by_id("id_password")
         elem.send_keys(pwd)
+        time.sleep(3)
         elem.send_keys(Keys.RETURN)
-        driver.get("http://127.0.0.1:8000/admin")
+        time.sleep(3)
         assert "Logged In"
-        time.sleep(1)
         driver.find_element_by_link_text("Posts").click()
+        time.sleep(3)
         try:
             while driver.find_element_by_link_text("This is a test post with selenium"):
                 driver.find_element_by_link_text("This is a test post with selenium").click()

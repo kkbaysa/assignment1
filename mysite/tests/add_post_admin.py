@@ -16,13 +16,15 @@ class Blog_ATS(unittest.TestCase):
         driver = self.driver
         driver.maximize_window()
         driver.get("http://127.0.0.1:8000/admin")
+        time.sleep(3)
         elem = driver.find_element_by_id("id_username")
         elem.send_keys(user)
         elem = driver.find_element_by_id("id_password")
         elem.send_keys(pwd)
-        elem.send_keys(Keys.RETURN)
-        driver.get("http://127.0.0.1:8000/admin")
         time.sleep(3)
+        elem.send_keys(Keys.RETURN)
+        time.sleep(3)
+
 
         assert "Logged In"
 
@@ -42,6 +44,7 @@ class Blog_ATS(unittest.TestCase):
         elem.send_keys("This is a test post of text with selenium")
         driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/form/div/fieldset/div[5]/div/p/span[1]/a[1]").click()
         driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/form/div/fieldset/div[5]/div/p/span[2]/a[1]").click()
+        time.sleep(3)
         elem.send_keys(Keys.RETURN)
         driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/form/div/div/input[1]").click()
         time.sleep(5)
